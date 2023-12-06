@@ -1,12 +1,16 @@
-#include <LiquidCrystal.h> // inclouded for led screem
+//#include <LiquidCrystal.h> 
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+// inclouded for led screem
 AudioInputUSB usb_from;
 AudioOutputUSB usb_to;
 AudioInputI2S i2s_from;
 AudioOutputI2S i2s_to;
 
 AudioConnection patchCord_in(i2s_from, 0, usb_to, 0);
-AudioConnection patchCord_outL(usb_from, 0, i2s_to, 0);
-AudioConnection patchCord_outR(usb_from, 1, i2s_to, 1);
 
 AudioControlSGTL5000 controller; // controller 
 //RS pin to 33 
@@ -49,10 +53,9 @@ void setup() {
   AudioMemory(128);
 
   controller.enable();
-  controller.volume(0.6);
 
   controller.inputSelect(AUDIO_INPUT_MIC);
-  controller.micGain(10);
+  controller.micGain(50);
 
 /*sample configure to light up lcd. 1= on, 0 = off create if statement for is souynd detecterde, light lcd.
 byte heart[8] = { 
@@ -76,11 +79,11 @@ lcd.createChar(0, heart);
 
 void loop() {
   // read the PC's volume setting
-  float vol = usb_from.volume();
+  // float vol = usb_from.volume();
 
-  if (vol > 0) {
-    vol = 0.3 + vol * 0.5;
-  }
+  // if (vol > 0) {
+  //   vol = 0.3 + vol * 0.5;
+  // }
 /*
   int sensorReading = analogRead(A0);
   // map the result to 200 - 1000:
@@ -96,6 +99,5 @@ void loop() {
   delay(delayTime);
   controller.volume(vol);
 
-  delay(100);
+  delay(100);*/
 }
-*/
