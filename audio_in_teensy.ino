@@ -7,12 +7,13 @@
 // inclouded for led screem
 AudioInputUSB usb_from;
 AudioOutputUSB usb_to;
-AudioInputI2S i2s_from;
-AudioOutputI2S i2s_to;
+AudioInputI2S2 i2s_from;
+AudioOutputI2S2 i2s_to;
 
 AudioConnection patchCord_in(i2s_from, 0, usb_to, 0);
+AudioConnection patchCord_in2(i2s_from, 1, usb_to, 1);
 
-AudioControlSGTL5000 controller; // controller 
+//AudioControlSGTL5000 controller; // controller 
 //RS pin to 33 
 //Enable to 34
 //D4 to 32
@@ -52,10 +53,10 @@ lcd.createChar(0, heart);
 void setup() {
   AudioMemory(128);
 
-  controller.enable();
+  //controller.enable();
 
-  controller.inputSelect(AUDIO_INPUT_MIC);
-  controller.micGain(50);
+  //controller.inputSelect(AUDIO_INPUT_MIC);
+ // controller.micGain(46);
 
 /*sample configure to light up lcd. 1= on, 0 = off create if statement for is souynd detecterde, light lcd.
 byte heart[8] = { 
