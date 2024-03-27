@@ -6,7 +6,7 @@
 #include <SerialFlash.h>
 // inclouded for led screem
 AudioOutputUSB usb_to;
-AudioInputI2SQuad1 i2s_from;
+AudioInputI2SQuad i2s_from;
 AudioOutputI2S i2s_to;
 
 AudioConnection patchCord_in(i2s_from, 0, i2s_to, 0);
