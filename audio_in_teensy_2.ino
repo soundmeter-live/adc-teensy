@@ -1,3 +1,9 @@
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
 //teensy 2
 AudioOutputUSB usb_to;
 AudioInputI2Sslave i2s_from;
